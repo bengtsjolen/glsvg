@@ -189,7 +189,7 @@ class SVGDoc(SVGContainer):
             self.width = w
 
         self.opacity = 1.0
-        for e in root.getchildren():
+        for e in root:
             try:
                 self._parse_element(e)
             except Exception as ex:
@@ -241,7 +241,7 @@ class SVGDoc(SVGContainer):
         elif e.tag.endswith('use'):
             renderable = SVGUse(self, e, parent)
             self._paths.append(renderable)
-        for c in e.getchildren():
+        for c in e:
             try:
                 self._parse_element(c, renderable)
             except Exception as ex:
